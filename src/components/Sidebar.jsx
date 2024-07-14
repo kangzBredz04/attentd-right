@@ -1,55 +1,97 @@
-import { MdOutlineDashboard } from "react-icons/md";
-import { FiUsers } from "react-icons/fi";
-import { LiaFileInvoiceDollarSolid } from "react-icons/lia";
-import { LuBoxes } from "react-icons/lu";
-import { RiShirtLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import { BiHome } from "react-icons/bi";
+import { HiOutlineUsers } from "react-icons/hi2";
+import { LuClipboardList } from "react-icons/lu";
+import { FaHeadphonesSimple } from "react-icons/fa6";
+import { IoMailUnreadOutline } from "react-icons/io5";
+import { SlLocationPin } from "react-icons/sl";
+import { MdOutlineCalendarMonth } from "react-icons/md";
+import { GrUserExpert } from "react-icons/gr";
+import { LuClock } from "react-icons/lu";
 
 export default function SideBar() {
   return (
-    <div className="font-KumbhSans flex flex-col gap-7  h-screen w-36 py-4 px-4 bg-gray-200">
-      <div className=" text-center">
-        <h1 className="text-xl font-bold tracking-widest">SAHABA</h1>
-        <h1 className="text-xl font-bold tracking-widest">FASHION</h1>
+    <aside className="z-20 hidden w-64 overflow-y-auto bg-white md:block flex-shrink-0">
+      <div className="py-4 text-gray-500">
+        <a href="#" className="ml-6 text-lg font-bold text-gray-800 block">
+          <img
+            src="https://msib6.sigarda.com/assets/img/logo.png"
+            alt=""
+            className="w-44"
+          />
+        </a>
+        <ul className="mt-6">
+          <li className="relative px-6 py-3">
+            <Link className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800">
+              <BiHome size={20} />
+              <span className="ml-4">Dashboard</span>
+            </Link>
+          </li>
+          <li className="relative px-6 py-3">
+            <Link
+              to={"/admin/user"}
+              className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800"
+            >
+              <HiOutlineUsers size={20} />
+              <span className="ml-4">User</span>
+            </Link>
+          </li>
+          <li className="relative px-6 py-3">
+            <Link className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800">
+              <LuClipboardList size={20} />
+              <span className="ml-4">Project</span>
+            </Link>
+          </li>
+          <li className="relative px-6 py-3">
+            <Link className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800">
+              <FaHeadphonesSimple size={20} />
+              <span className="ml-4">Meeting</span>
+            </Link>
+          </li>
+          <li className="relative px-6 py-3">
+            <Link className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800">
+              <IoMailUnreadOutline size={20} />
+              <span className="ml-4">Notification</span>
+            </Link>
+          </li>
+          <li className="relative px-6 py-3">
+            <Link className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800">
+              <SlLocationPin size={20} />
+              <span className="ml-4">Location</span>
+            </Link>
+          </li>
+          <li className="relative px-6 py-3">
+            <Link className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800">
+              <MdOutlineCalendarMonth size={20} />
+              <span className="ml-4">Schedule</span>
+            </Link>
+          </li>
+          <li className="relative px-6 py-3">
+            <Link className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800">
+              <MdOutlineCalendarMonth size={20} />
+              <span className="ml-4">Schedule User</span>
+            </Link>
+          </li>
+          <li className="relative px-6 py-3">
+            <Link className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800">
+              <GrUserExpert size={20} />
+              <span className="ml-4">Presence</span>
+            </Link>
+          </li>
+          <li className="relative px-6 py-3">
+            <Link className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800">
+              <LuClock size={20} />
+              <span className="ml-4">Shift</span>
+            </Link>
+          </li>
+          <li className="relative px-6 py-3">
+            <Link className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800">
+              <LuClock size={20} />
+              <span className="ml-4">Shift</span>
+            </Link>
+          </li>
+        </ul>
       </div>
-      <div className="flex flex-col justify-between h-full">
-        <Link className="text-center flex flex-col gap-1 hover:cursor-pointer">
-          <MdOutlineDashboard className="m-auto text-3xl" />
-          <h1 className="text-base font-medium">Beranda</h1>
-        </Link>
-        <Link
-          to="/admin/user"
-          className="text-center flex flex-col gap-1 hover:cursor-pointer"
-        >
-          <FiUsers className="m-auto text-3xl" />
-          <h1 className="text-base font-medium">Pengguna</h1>
-        </Link>
-        <Link
-          to="/admin/product"
-          className="text-center flex flex-col gap-1 hover:cursor-pointer"
-        >
-          <RiShirtLine className="m-auto text-3xl" />
-          <h1 className="text-base font-medium">Produk</h1>
-        </Link>
-        <Link
-          to="/admin/order"
-          className="text-center flex flex-col gap-1 hover:cursor-pointer"
-        >
-          <LiaFileInvoiceDollarSolid className="m-auto text-3xl" />
-          <h1 className="text-base font-medium">Pesanan</h1>
-        </Link>
-        <Link
-          to="/admin/stock"
-          className="text-center flex flex-col gap-1 hover:cursor-pointer"
-        >
-          <LuBoxes className="m-auto text-3xl" />
-          <h1 className="text-base font-medium">Stok</h1>
-        </Link>
-        {/* <Link className="text-center flex flex-col gap-1 hover:cursor-pointer">
-          <GrLogout className="m-auto text-3xl" />
-          <h1 className="text-base font-medium">Logout</h1>
-        </Link> */}
-      </div>
-    </div>
+    </aside>
   );
 }
