@@ -22,7 +22,10 @@ export default function Navbar() {
       </div>
       {modal && (
         <div className="absolute bg-white border border-gray-300 right-7 top-14 py-2 w-48 px-3 rounded-lg flex flex-col gap-2 shadow-xl">
-          <Link className="flex items-center gap-3 cursor-pointer">
+          <Link
+            to={"/admin/profile"}
+            className="flex items-center gap-3 cursor-pointer"
+          >
             <FaRegUser />
             <p>Profile</p>
           </Link>
