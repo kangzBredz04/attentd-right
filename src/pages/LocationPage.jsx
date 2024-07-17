@@ -106,6 +106,11 @@ export default function LocationPage() {
     setModal({ action: "", location: null });
   };
 
+  const handleShowMap = (latitude, longitude) => {
+    const url = `https://www.google.com/maps?q=${latitude},${longitude}`;
+    window.open(url, "_blank");
+  };
+
   const handleChangeEntriesPerPage = (e) => {
     setEntriesPerPage(Number(e.target.value));
     setCurrentPage(1);
@@ -122,6 +127,7 @@ export default function LocationPage() {
     (currentPage - 1) * entriesPerPage,
     currentPage * entriesPerPage
   );
+
   return (
     <main className="h-full overflow-y-auto">
       <div className="container grid px-6 mx-auto">
@@ -227,7 +233,9 @@ export default function LocationPage() {
                                 Delete
                               </button>
                               <button
-                                // onClick={() => handleDeleteLocation(l)}
+                                onClick={() =>
+                                  handleShowMap(l.latitude, l.longtitude)
+                                }
                                 className="px-4 py-2 inline-block text-sm font-medium text-white transition-colors duration-150 bg-orange-600 border border-transparent rounded-lg active:bg-orange-600 hover:bg-orange-700 focus:outline-none focus:shadow-outline-purple"
                               >
                                 Maps
