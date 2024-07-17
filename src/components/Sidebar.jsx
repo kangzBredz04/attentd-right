@@ -22,7 +22,10 @@ export default function SideBar() {
         </a>
         <ul className="mt-6">
           <li className="relative px-6 py-3">
-            <Link className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800">
+            <Link
+              to={"/admin"}
+              className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800"
+            >
               <BiHome size={20} />
               <span className="ml-4">Dashboard</span>
             </Link>
@@ -37,13 +40,19 @@ export default function SideBar() {
             </Link>
           </li>
           <li className="relative px-6 py-3">
-            <Link className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800">
+            <Link
+              to={"/admin/project"}
+              className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800"
+            >
               <LuClipboardList size={20} />
               <span className="ml-4">Project</span>
             </Link>
           </li>
           <li className="relative px-6 py-3">
-            <Link className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800">
+            <Link
+              to={"/admin/meeting"}
+              className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800"
+            >
               <FaHeadphonesSimple size={20} />
               <span className="ml-4">Meeting</span>
             </Link>
