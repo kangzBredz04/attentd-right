@@ -8,6 +8,7 @@ import ProjectPage from "./pages/ProjectPage.jsx";
 // import Dashboard from "./pages/Dashboard.jsx";
 import MeetingPage from "./pages/MeetingPage.jsx";
 import NotificationPage from "./pages/NotificationPage.jsx";
+import LocationPage from "./pages/LocationPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -35,8 +36,8 @@ const router = createBrowserRouter([
         element: <NotificationPage />,
       },
       {
-        path: "/admin/product",
-        // element: <ProductAdmin />,
+        path: "/admin/location",
+        element: <LocationPage />,
       },
     ],
   },
