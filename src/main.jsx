@@ -10,6 +10,7 @@ import MeetingPage from "./pages/MeetingPage.jsx";
 import NotificationPage from "./pages/NotificationPage.jsx";
 import LocationPage from "./pages/LocationPage.jsx";
 import ShiftChangeRequestPage from "./pages/ShiftChangeRequestPage.jsx";
+import ProfilePage from "./pages/ProfilePage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/shift-change-request",
         element: <ShiftChangeRequestPage />,
+      },
+      {
+        path: "/admin/profile",
+        element: <ProfilePage />,
       },
     ],
   },
