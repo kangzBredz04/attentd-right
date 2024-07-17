@@ -7,7 +7,8 @@ import {
   FaAngleLeft,
 } from "react-icons/fa";
 
-const notificationData=[  {
+const notificationData = [
+  {
     id: 1,
     user: "super_admin",
     type: "Dashboard",
@@ -25,52 +26,40 @@ const notificationData=[  {
     type: "Notification",
     message: "Notification untuk semua users",
   },
-    {
+  {
     id: 4,
     user: "super_admin",
     type: "Notification",
     message: "Notification untuk semua users",
-    }
-]
+  },
+];
 
 export default function NotificationPage() {
-    const [keyword, setKeyword] = useState("");
-  const [users, setUsers] = useState(usersData);
-  const [modal, setModal] = useState({ action: "", user: null });
+  const [keyword, setKeyword] = useState("");
+  const [notifications, setNotifications] = useState(notificationData);
+  const [modal, setModal] = useState({ action: "", notification: null });
   const [entriesPerPage, setEntriesPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const filter = users.filter(
-    (user) =>
-      user.email.toLowerCase().includes(keyword.toLowerCase()) ||
-      user.name.toLowerCase().includes(keyword.toLowerCase()) ||
-      user.role.toLowerCase().includes(keyword.toLowerCase())
+  const filter = notifications.filter(
+    (notification) =>
+      notification.user.toLowerCase().includes(keyword.toLowerCase()) ||
+      notification.type.toLowerCase().includes(keyword.toLowerCase()) ||
+      notification.message.toLowerCase().includes(keyword.toLowerCase())
   );
 
-  const handleAddUser = () => {
-    setModal({ action: "add", user: null });
+  const handleAddNotification = () => {
+    setModal({ action: "add", notification: null });
   };
 
-  const handleShowUser = (user) => {
-    setModal({ action: "show", user });
-  };
-
-  const handleEditUser = (user) => {
-    setModal({ action: "edit", user });
-  };
-
-  const handleDeleteUser = (user) => {
-    if (window.confirm(`Are you sure you want to delete ${user.name}?`)) {
-      setUsers(users.filter((u) => u.id !== user.id));
-    }
-  };
-
-  const handleSaveUser = (user) => {
+  const handleSaveNotification = (notification) => {
     if (modal.action === "edit") {
-      setUsers(users.map((u) => (u.id === user.id ? user : u)));
+      setNotifications(
+        notifications.map((n) => (n.id === notification.id ? notification : n))
+      );
     } else {
-      user.id = users.length + 1;
-      setUsers([...users, user]);
+      notification.id = notifications.length + 1;
+      setNotifications([...notifications, notification]);
     }
     setModal({ action: "", user: null });
   };
@@ -87,200 +76,163 @@ export default function NotificationPage() {
     setCurrentPage(newPage);
   };
 
-  const paginatedUsers = filter.slice(
+  const paginatedNotification = filter.slice(
     (currentPage - 1) * entriesPerPage,
     currentPage * entriesPerPage
   );
-    return (
-      <main className="h-full overflow-y-auto">
-        <div className="container grid px-6 mx-auto">
-          <div className="my-6 flex justify-between items-center">
-            <h2 className="text-2xl font-semibold text-gray-700">
-              Tabel Users
-            </h2>
-            <button
-              onClick={handleAddUser}
-              className="add-button px-4 py-2 text-sm font-medium text-white transition-colors duration-150 bg-orange-500 border border-transparent rounded-lg active:bg-orange-500 hover:bg-orange-600 focus:outline-none focus:shadow-outline-purple"
-            >
-              Add User
-            </button>
-          </div>
-          <div className="w-full overflow-hidden rounded-lg shadow-xs">
-            <div className="w-full overflow-x-auto bg-white p-4">
-              <div className="dt-container dt-empty-footer">
-                <div className="flex items-center justify-between">
-                  <div className="flex gap-3">
-                    <select
-                      value={entriesPerPage}
-                      onChange={handleChangeEntriesPerPage}
-                      className="p-1"
-                    >
-                      <option value="10">10</option>
-                      <option value="25">25</option>
-                      <option value="50">50</option>
-                      <option value="100">100</option>
-                    </select>
-                    <label htmlFor="">entries per page</label>
-                  </div>
-                  <div className="dt-layout-cell dt-end">
-                    <label htmlFor="">Search:</label>
-                    <input
-                      type="text"
-                      onChange={(e) => setKeyword(e.target.value)}
-                      className="border-[1px] border-black rounded-[3px] p-1 bg-transparent text-inherit ml-[3px]"
-                    />
-                  </div>
+  return (
+    <main className="h-full overflow-y-auto">
+      <div className="container grid px-6 mx-auto">
+        <div className="my-6 flex justify-between items-center">
+          <h2 className="text-2xl font-semibold text-gray-700">
+            Tabel Notification
+          </h2>
+          <button
+            onClick={handleAddNotification}
+            className="add-button px-4 py-2 text-sm font-medium text-white transition-colors duration-150 bg-orange-500 border border-transparent rounded-lg active:bg-orange-500 hover:bg-orange-600 focus:outline-none focus:shadow-outline-purple"
+          >
+            Add Notification
+          </button>
+        </div>
+        <div className="w-full overflow-hidden rounded-lg shadow-xs">
+          <div className="w-full overflow-x-auto bg-white p-4">
+            <div className="dt-container dt-empty-footer">
+              <div className="flex items-center justify-between">
+                <div className="flex gap-3">
+                  <select
+                    value={entriesPerPage}
+                    onChange={handleChangeEntriesPerPage}
+                    className="p-1"
+                  >
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                  </select>
+                  <label htmlFor="">entries per page</label>
                 </div>
-                <div className="block clear-both mt-5">
-                  <div className="p-1">
-                    <table className="w-full whitespace-no-wrap">
-                      <colgroup>
-                        <col className="w-[67.8229px]" />
-                        <col className="w-[140.198px]" />
-                        <col className="w-[140.198px]" />
-                        <col className="w-[232.312px]" />
-                        <col className="w-[341.469px]" />
-                      </colgroup>
-                      <thead>
-                        <tr className="text-xs font-semibold tracking-wide text-left text-gray-600 uppercase border-b bg-gray-50">
-                          <th className="cursor-pointer relative pr-[30px] text-center p-[10px] border-b-[1px] border-gray-600 font-bold">
-                            ID
-                          </th>
-                          <th className="cursor-pointer relative pr-[30px] text-center p-[10px] border-b-[1px] border-gray-600 font-bold">
-                            NAME
-                          </th>
-                          <th className="cursor-pointer relative pr-[30px] text-center p-[10px] border-b-[1px] border-gray-600 font-bold">
-                            ROLE
-                          </th>
-                          <th className="cursor-pointer relative pr-[30px] text-center p-[10px] border-b-[1px] border-gray-600 font-bold">
-                            EMAIL
-                          </th>
-                          <th className="cursor-pointer relative pr-[30px] text-center p-[10px] border-b-[1px] border-gray-600 font-bold">
-                            ACTION
-                          </th>
+                <div className="dt-layout-cell dt-end">
+                  <label htmlFor="">Search:</label>
+                  <input
+                    type="text"
+                    onChange={(e) => setKeyword(e.target.value)}
+                    className="border-[1px] border-black rounded-[3px] p-1 bg-transparent text-inherit ml-[3px]"
+                  />
+                </div>
+              </div>
+              <div className="block clear-both mt-5">
+                <div className="p-1">
+                  <table className="w-full whitespace-no-wrap">
+                    <colgroup>
+                      <col className="w-[92.1979px]" />
+                      <col className="w-[161.135px]" />
+                      <col className="w-[150.438px]" />
+                      <col className="w-[518.229px]" />
+                    </colgroup>
+                    <thead>
+                      <tr className="text-xs font-semibold tracking-wide text-left text-gray-600 uppercase border-b bg-gray-50">
+                        <th className="cursor-pointer relative pr-[30px] text-center p-[10px] border-b-[1px] border-gray-600 font-bold">
+                          ID
+                        </th>
+                        <th className="cursor-pointer relative pr-[30px] text-center p-[10px] border-b-[1px] border-gray-600 font-bold">
+                          USER
+                        </th>
+                        <th className="cursor-pointer relative pr-[30px] text-center p-[10px] border-b-[1px] border-gray-600 font-bold">
+                          TYPE
+                        </th>
+                        <th className="cursor-pointer relative pr-[30px] text-center p-[10px] border-b-[1px] border-gray-600 font-bold">
+                          MESSAGE
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y text-xs text-gray-600">
+                      {paginatedNotification.map((n, index) => (
+                        <tr key={index} className="h-10">
+                          <td className="text-center py-[8px] px-[10px]">
+                            {index + 1}
+                          </td>
+                          <td className="text-center py-[8px] px-[10px]">
+                            {n.user}
+                          </td>
+                          <td className="text-center py-[8px] px-[10px]">
+                            {n.type}
+                          </td>
+                          <td className="text-center py-[8px] px-[10px]">
+                            {n.message}
+                          </td>
                         </tr>
-                      </thead>
-                      <tbody className="divide-y text-xs text-gray-600">
-                        {paginatedUsers.map((u, index) => (
-                          <tr key={index} className="h-10">
-                            <td className="text-center py-[8px] px-[10px]">
-                              {u.id}
-                            </td>
-                            <td className="text-center py-[8px] px-[10px]">
-                              {u.name}
-                            </td>
-                            <td className="text-center py-[8px] px-[10px]">
-                              {u.role}
-                            </td>
-                            <td className="text-center py-[8px] px-[10px]">
-                              {u.email}
-                            </td>
-                            <td className="text-center py-[8px] px-[10px]">
-                              <div className="btn-group flex gap-6 justify-center">
-                                <button
-                                  onClick={() => handleShowUser(u)}
-                                  className="px-4 py-2 inline-block text-sm font-medium text-white transition-colors duration-150 bg-green-600 border border-transparent rounded-lg active:bg-green-600 hover:bg-green-700 focus:outline-none focus:shadow-outline-purple"
-                                >
-                                  Show
-                                </button>
-                                <button
-                                  onClick={() => handleEditUser(u)}
-                                  className="px-4 py-2 inline-block text-sm font-medium text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-purple"
-                                >
-                                  Edit
-                                </button>
-                                <button
-                                  onClick={() => handleDeleteUser(u)}
-                                  className="px-4 py-2 inline-block text-sm font-medium text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-lg active:bg-red-600 hover:bg-red-700 focus:outline-none focus:shadow-outline-purple"
-                                >
-                                  Delete
-                                </button>
-                              </div>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
-                <div className="flex justify-between mx-10 my-5">
-                  <div>
-                    <p>
-                      Showing {paginatedUsers.length} of {filter.length} entries
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-5">
-                    <FaAngleDoubleLeft
-                      onClick={() => handlePageChange(1)}
-                      className={`cursor-pointer ${
-                        currentPage === 1 && "text-gray-300"
+              </div>
+              <div className="flex justify-between mx-10 my-5">
+                <div>
+                  <p>
+                    Showing {paginatedNotification.length} of {filter.length}{" "}
+                    entries
+                  </p>
+                </div>
+                <div className="flex items-center gap-5">
+                  <FaAngleDoubleLeft
+                    onClick={() => handlePageChange(1)}
+                    className={`cursor-pointer ${
+                      currentPage === 1 && "text-gray-300"
+                    }`}
+                  />
+                  <FaAngleLeft
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    className={`cursor-pointer ${
+                      currentPage === 1 && "text-gray-300"
+                    }`}
+                  />
+                  {[...Array(totalPages)].map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => handlePageChange(i + 1)}
+                      className={`px-2 py-1 ${
+                        currentPage === i + 1 ? "bg-gray-300" : "bg-white"
                       }`}
-                    />
-                    <FaAngleLeft
-                      onClick={() => handlePageChange(currentPage - 1)}
-                      className={`cursor-pointer ${
-                        currentPage === 1 && "text-gray-300"
-                      }`}
-                    />
-                    {[...Array(totalPages)].map((_, i) => (
-                      <button
-                        key={i}
-                        onClick={() => handlePageChange(i + 1)}
-                        className={`px-2 py-1 ${
-                          currentPage === i + 1 ? "bg-gray-300" : "bg-white"
-                        }`}
-                      >
-                        {i + 1}
-                      </button>
-                    ))}
-                    <FaAngleRight
-                      onClick={() => handlePageChange(currentPage + 1)}
-                      className={`cursor-pointer ${
-                        currentPage === totalPages && "text-gray-300"
-                      }`}
-                    />
-                    <FaAngleDoubleRight
-                      onClick={() => handlePageChange(totalPages)}
-                      className={`cursor-pointer ${
-                        currentPage === totalPages && "text-gray-300"
-                      }`}
-                    />
-                  </div>
+                    >
+                      {i + 1}
+                    </button>
+                  ))}
+                  <FaAngleRight
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    className={`cursor-pointer ${
+                      currentPage === totalPages && "text-gray-300"
+                    }`}
+                  />
+                  <FaAngleDoubleRight
+                    onClick={() => handlePageChange(totalPages)}
+                    className={`cursor-pointer ${
+                      currentPage === totalPages && "text-gray-300"
+                    }`}
+                  />
                 </div>
               </div>
             </div>
           </div>
         </div>
-        {modal.action && (
-          <UserModal
-            action={modal.action}
-            user={modal.user}
-            onClose={() => setModal({ action: "", user: null })}
-            onSave={handleSaveUser}
-          />
-        )}
-      </main>
-    );
+      </div>
+      {modal.action && (
+        <NotificationModal
+          action={modal.action}
+          notification={modal.notification}
+          onClose={() => setModal({ action: "", notification: null })}
+          onSave={handleSaveNotification}
+        />
+      )}
+    </main>
+  );
 }
 
-function UserModal({ action, user, onClose, onSave }) {
+function NotificationModal({ action, notification, onClose, onSave }) {
   const [formData, setFormData] = useState(
-    user || {
-      name: "",
-      role: "",
-      email: "",
-      password: "",
-      fullName: "",
-      birthDate: "",
-      joinDate: "",
-      points: "",
-      gender: "",
-      phone: "",
-      religion: "",
-      companyName: "",
-      companyBranch: "",
-      position: "",
-      division: "",
+    notification || {
+      user: "",
+      type: "",
+      message: "",
     }
   );
 
@@ -302,145 +254,45 @@ function UserModal({ action, user, onClose, onSave }) {
       <div className="bg-white p-6 rounded-lg shadow-lg w-[90%] md:w-[50%]">
         <h2 className="text-xl font-bold mb-4">
           {action === "add"
-            ? "Add User"
+            ? "Add Notification"
             : action === "edit"
-            ? "Edit User"
-            : "View User"}
+            ? "Edit Notification"
+            : "View Notification"}
         </h2>
         <form onSubmit={handleSubmit}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              disabled={action === "show"}
-              placeholder="Name"
-              className="p-2 border rounded"
-            />
+          <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
             <select
-              name="role"
-              value={formData.role}
+              name="user"
+              value={formData.user}
               onChange={handleChange}
               disabled={action === "show"}
               className="p-2 border rounded"
             >
-              <option value="" disabled>
-                Select Role
-              </option>
+              <option value="semua user">Semua user</option>
               <option value="Super Admin">Super Admin</option>
               <option value="Admin">Admin</option>
               <option value="Client">Client</option>
             </select>
-            <input
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              disabled={action === "show"}
-              placeholder="Email"
-              className="p-2 border rounded"
-            />
-            {action !== "show" && (
-              <input
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                placeholder="Password"
-                className="p-2 border rounded"
-              />
-            )}
-            <input
-              name="fullName"
-              value={formData.fullName}
-              onChange={handleChange}
-              disabled={action === "show"}
-              placeholder="Full Name"
-              className="p-2 border rounded"
-            />
-            <input
-              name="birthDate"
-              value={formData.birthDate}
-              onChange={handleChange}
-              disabled={action === "show"}
-              placeholder="Birth Date"
-              className="p-2 border rounded"
-            />
-            <input
-              name="joinDate"
-              value={formData.joinDate}
-              onChange={handleChange}
-              disabled={action === "show"}
-              placeholder="Join Date"
-              className="p-2 border rounded"
-            />
-            <input
-              name="points"
-              value={formData.points}
-              onChange={handleChange}
-              disabled={action === "show"}
-              placeholder="Points"
-              type="number"
-              className="p-2 border rounded"
-            />
             <select
-              name="gender"
-              value={formData.gender}
+              name="type"
+              value={formData.type}
               onChange={handleChange}
               disabled={action === "show"}
               className="p-2 border rounded"
             >
               <option value="" disabled>
-                Select Gender
+                Type
               </option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
+              <option value="Dashboard">Dashboard</option>
+              <option value="Notification">Notification</option>
             </select>
             <input
-              name="phone"
-              value={formData.phone}
+              name="message"
+              value={formData.message}
               onChange={handleChange}
               disabled={action === "show"}
-              placeholder="Phone"
-              className="p-2 border rounded"
-            />
-            <input
-              name="religion"
-              value={formData.religion}
-              onChange={handleChange}
-              disabled={action === "show"}
-              placeholder="Religion"
-              className="p-2 border rounded"
-            />
-            <input
-              name="companyName"
-              value={formData.companyName}
-              onChange={handleChange}
-              disabled={action === "show"}
-              placeholder="Company Name"
-              className="p-2 border rounded"
-            />
-            <input
-              name="companyBranch"
-              value={formData.companyBranch}
-              onChange={handleChange}
-              disabled={action === "show"}
-              placeholder="Company Branch"
-              className="p-2 border rounded"
-            />
-            <input
-              name="position"
-              value={formData.position}
-              onChange={handleChange}
-              disabled={action === "show"}
-              placeholder="Position"
-              className="p-2 border rounded"
-            />
-            <input
-              name="division"
-              value={formData.division}
-              onChange={handleChange}
-              disabled={action === "show"}
-              placeholder="Division"
-              className="p-2 border rounded"
+              placeholder="Message"
+              className="p-2 border rounded h-32"
             />
           </div>
           <div className="mt-4 flex justify-end gap-4">
