@@ -7,6 +7,7 @@ import UserPage from "./pages/UserPage.jsx";
 import ProjectPage from "./pages/ProjectPage.jsx";
 // import Dashboard from "./pages/Dashboard.jsx";
 import MeetingPage from "./pages/MeetingPage.jsx";
+import NotificationPage from "./pages/NotificationPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -30,8 +31,8 @@ const router = createBrowserRouter([
         element: <MeetingPage />,
       },
       {
-        path: "/admin/order",
-        // element: <OrderAdmin />,
+        path: "/admin/notification",
+        element: <NotificationPage />,
       },
       {
         path: "/admin/product",
