@@ -337,8 +337,6 @@ function ProjectModal({ action, project, onClose, onSave }) {
     }
   );
 
-  console.log(project);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
