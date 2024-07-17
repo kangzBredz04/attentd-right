@@ -11,6 +11,7 @@ import NotificationPage from "./pages/NotificationPage.jsx";
 import LocationPage from "./pages/LocationPage.jsx";
 import ShiftChangeRequestPage from "./pages/ShiftChangeRequestPage.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
+import PresencePage from "./pages/PresencePage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/location",
         element: <LocationPage />,
+      },
+      {
+        path: "/admin/presence",
+        element: <PresencePage />,
       },
       {
         path: "/admin/shift-change-request",
