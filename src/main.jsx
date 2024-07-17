@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import UserPage from "./pages/UserPage.jsx";
 import ProjectPage from "./pages/ProjectPage.jsx";
 // import Dashboard from "./pages/Dashboard.jsx";
-// import MeetingPage from "./pages/MeetingPage.jsx";
+import MeetingPage from "./pages/MeetingPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/admin/meeting",
-        // element: <MeetingPage />,
+        element: <MeetingPage />,
       },
       {
         path: "/admin/order",
