@@ -7,7 +7,8 @@ import { IoMailUnreadOutline } from "react-icons/io5";
 import { SlLocationPin } from "react-icons/sl";
 import { MdOutlineCalendarMonth } from "react-icons/md";
 import { GrUserExpert } from "react-icons/gr";
-import { LuClock } from "react-icons/lu";
+import { FaUserClock } from "react-icons/fa6";
+import { FaBusinessTime } from "react-icons/fa6";
 
 export default function SideBar() {
   return (
@@ -95,14 +96,14 @@ export default function SideBar() {
           </li>
           <li className="relative px-6 py-3">
             <Link className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800">
-              <LuClock size={20} />
-              <span className="ml-4">Shift</span>
+              <FaUserClock size={20} />
+              <span className="ml-4">Employee Shift</span>
             </Link>
           </li>
           <li className="relative px-6 py-3">
             <Link className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800">
-              <LuClock size={20} />
-              <span className="ml-4">Shift</span>
+              <FaBusinessTime size={20} />
+              <span className="ml-4">Shift Chaneg Request</span>
             </Link>
           </li>
         </ul>
