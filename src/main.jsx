@@ -4,28 +4,30 @@ import App from "./App.jsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import UserPage from "./pages/UserPage.jsx";
+import ProjectPage from "./pages/ProjectPage.jsx";
+// import Dashboard from "./pages/Dashboard.jsx";
+// import MeetingPage from "./pages/MeetingPage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    // errorElement: <ErrorPageAdmin />,
     children: [
       {
         path: "/admin",
-        // element: <DashboardAdmin />,
+        // element: <Dashboard />,
       },
       {
         path: "/admin/user",
         element: <UserPage />,
       },
       {
-        path: "/admin/profile",
-        // element: <MyAccountAdmin />,
+        path: "/admin/project",
+        element: <ProjectPage />,
       },
       {
-        path: "/admin/stock",
-        // element: <StockAdmin />,
+        path: "/admin/meeting",
+        // element: <MeetingPage />,
       },
       {
         path: "/admin/order",
