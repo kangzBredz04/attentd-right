@@ -14,6 +14,55 @@ const locationData = [
     latitude: -7.320197958175919,
     longtitude: 112.73149962808996,
   },
+  { id: 2, office_name: "Googleplex", latitude: 37.422, longtitude: -122.084 },
+  {
+    id: 3,
+    office_name: "Sydney Opera House",
+    latitude: -33.8567844,
+    longtitude: 151.213108,
+  },
+  {
+    id: 4,
+    office_name: "Eiffel Tower",
+    latitude: 48.8588443,
+    longtitude: 2.2943506,
+  },
+  {
+    id: 5,
+    office_name: "Statue of Liberty",
+    latitude: 40.689247,
+    longtitude: -74.044502,
+  },
+  {
+    id: 6,
+    office_name: "Tokyo Tower",
+    latitude: 35.6585805,
+    longtitude: 139.7454329,
+  },
+  {
+    id: 7,
+    office_name: "Louvre Museum",
+    latitude: 48.8606111,
+    longtitude: 2.337644,
+  },
+  {
+    id: 8,
+    office_name: "Burj Khalifa",
+    latitude: 25.197197,
+    longtitude: 55.2743764,
+  },
+  {
+    id: 9,
+    office_name: "Colosseum",
+    latitude: 41.890251,
+    longtitude: 12.492373,
+  },
+  {
+    id: 10,
+    office_name: "Christ the Redeemer",
+    latitude: -22.951916,
+    longtitude: -43.2104872,
+  },
 ];
 
 export default function LocationPage() {
