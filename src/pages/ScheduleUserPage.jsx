@@ -173,10 +173,7 @@ export default function ScheduleUserPage() {
                                 Assign
                               </button>
                               <Link
-                                to={"/admin/detail-schedule"}
-                                onClick={() =>
-                                  localStorage.setItem("title", s.name)
-                                }
+                                to={"/admin/schedule/calender"}
                                 className="show-button px-4 py-2 inline-block text-sm font-medium text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
                               >
                                 Show
