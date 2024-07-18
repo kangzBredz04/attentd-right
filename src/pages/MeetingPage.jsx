@@ -27,7 +27,7 @@ export default function MeetingPage() {
   };
 
   return (
-    <main className="h-full overflow-y-auto">
+    <main className="h-full overflow-y-auto bg-gray-50">
       <div className="container grid px-6 mx-auto">
         <div className="my-6 flex justify-between items-center">
           <h2 className="text-2xl font-semibold text-gray-700">
