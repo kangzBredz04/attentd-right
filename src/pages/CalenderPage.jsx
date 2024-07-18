@@ -1,99 +1,78 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import dayjs from "dayjs";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import "dayjs/locale/id";
 
-const Calendar = () => {
-  const [currentDate, setCurrentDate] = useState(dayjs());
+dayjs.locale("id");
 
-  const startDay = currentDate.startOf("month").startOf("week");
-  const endDay = currentDate.endOf("month").endOf("week");
+export default function CalendarPage() {
+  // basic usage
+  dayjs().format();
+
+  // parse
+  dayjs("2018-08-08").format();
+
+  // format
+  dayjs().format("YYYY-MM-DD");
+  const [date, setDate] = useState(dayjs());
+
+  const startDay = date.startOf("month").startOf("week");
+  const endDay = date.endOf("month").endOf("week");
   const today = dayjs();
 
-  const generateCalendar = () => {
-    const date = startDay.clone().subtract(1, "day");
-    const calendar = [];
-    while (date.isBefore(endDay, "day")) {
-      calendar.push(
-        Array(7)
-          .fill(0)
-          .map(() => date.add(1, "day").clone())
-      );
-    }
-    return calendar;
-  };
+  const calendar = [];
+  let currentDay = startDay;
 
-  const isToday = (day) => day.isSame(today, "day");
-
-  const isCurrentMonth = (day) => day.isSame(currentDate, "month");
+  while (currentDay <= endDay) {
+    calendar.push(currentDay);
+    currentDay = currentDay.add(1, "day");
+  }
 
   const handlePrevMonth = () => {
-    setCurrentDate(currentDate.subtract(1, "month"));
+    setDate(date.subtract(1, "month"));
   };
 
   const handleNextMonth = () => {
-    setCurrentDate(currentDate.add(1, "month"));
+    setDate(date.add(1, "month"));
   };
-
-  const handleToday = () => {
-    setCurrentDate(today);
-  };
-
-  const calendar = generateCalendar();
 
   return (
-    <div className="max-w-lg mx-auto p-4 bg-white rounded-lg shadow-md">
-      <div className="flex justify-between items-center mb-4">
-        <button
-          className="text-gray-600 hover:text-gray-800"
-          onClick={handlePrevMonth}
-        >
-          <FaChevronLeft />
-        </button>
-        <h2 className="text-xl font-semibold">
-          {currentDate.format("MMMM YYYY")}
-        </h2>
-        <button
-          className="text-gray-600 hover:text-gray-800"
-          onClick={handleNextMonth}
-        >
-          <FaChevronRight />
-        </button>
-      </div>
-      <div className="flex justify-center mb-4">
-        <button
-          className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-700"
-          onClick={handleToday}
-        >
-          Today
-        </button>
-      </div>
-      <div className="grid grid-cols-7 gap-2">
-        {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
-          <div key={day} className="text-center font-semibold text-gray-600">
-            {day}
+    <div className="h-screen flex justify-center items-center p-6">
+      <div className="w-full h-full">
+        <div className="h-full flex flex-col">
+          <div className="flex justify-between items-center mb-4 p-4 bg-gray-200">
+            <button
+              onClick={handlePrevMonth}
+              className="px-4 py-2 bg-gray-300 rounded"
+            >
+              Prev
+            </button>
+            <h2 className="text-xl font-bold">{date.format("MMMM YYYY")}</h2>
+            <button
+              onClick={handleNextMonth}
+              className="px-4 py-2 bg-gray-300 rounded"
+            >
+              Next
+            </button>
           </div>
-        ))}
-        {calendar.map((week, i) => (
-          <React.Fragment key={i}>
-            {week.map((day, idx) => (
+          <div className="grid grid-cols-7 gap-1 flex-grow p-2 bg-white">
+            {["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"].map((day) => (
+              <div key={day} className="font-bold">
+                {day}
+              </div>
+            ))}
+            {calendar.map((day, index) => (
               <div
-                key={idx}
-                className={`text-center p-2 rounded-lg ${
-                  isToday(day)
-                    ? "bg-yellow-300"
-                    : isCurrentMonth(day)
-                    ? "bg-gray-100"
-                    : "bg-gray-200"
-                }`}
+                key={index}
+                className={`flex justify-center items-center h-20 border ${
+                  day.isSame(today, "day") ? "bg-blue-500 text-white" : ""
+                } ${!day.isSame(date, "month") ? "text-gray-400" : ""}`}
               >
                 {day.date()}
               </div>
             ))}
-          </React.Fragment>
-        ))}
+          </div>
+        </div>
       </div>
     </div>
   );
-};
-
-export default Calendar;
+}
