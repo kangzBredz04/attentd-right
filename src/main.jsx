@@ -16,6 +16,7 @@ import EmployeeShift from "./pages/EmployeeShift.jsx";
 import SchedulePage from "./pages/SchedulePage.jsx";
 import ShowSchedule from "./pages/ShowSchedule.jsx";
 import ScheduleUserPage from "./pages/ScheduleUserPage.jsx";
+import CalendarPage from "./pages/CalenderPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -59,8 +60,8 @@ const router = createBrowserRouter([
         element: <ScheduleUserPage />,
       },
       {
-        path: "/admin/scehdule-user/detail-schedule",
-        element: <ScheduleUserPage />,
+        path: "/admin/schedule/calender",
+        element: <CalendarPage />,
       },
       {
         path: "/admin/presence",
