@@ -60,7 +60,7 @@ export default function Dashboard() {
         borderWidth: 1,
         hoverBackgroundColor: "#17a2b8",
         hoverBorderColor: "#17a2b8",
-        data: [1, 2, 1, 3, 2, 5, 4, 3, 2, 1, 2, 4],
+        data: [0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0],
       },
     ],
   };
