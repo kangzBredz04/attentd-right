@@ -83,18 +83,12 @@ export default function ShiftChangeRequestPage() {
     currentPage * entriesPerPage
   );
   return (
-    <main className="h-full overflow-y-auto">
+    <main className="h-full overflow-y-auto bg-gray-50">
       <div className="container grid px-6 mx-auto">
         <div className="my-6 flex justify-between items-center">
           <h2 className="text-2xl font-semibold text-gray-700">
             Tabel Shift Change Requests
           </h2>
-          {/* <button
-            onClick={handleAdd}
-            className="add-button px-4 py-2 text-sm font-medium text-white transition-colors duration-150 bg-orange-500 border border-transparent rounded-lg active:bg-orange-500 hover:bg-orange-600 focus:outline-none focus:shadow-outline-purple"
-          >
-            Add User
-          </button> */}
         </div>
         <div className="w-full overflow-hidden rounded-lg shadow-xs">
           <div className="w-full overflow-x-auto bg-white p-4">
