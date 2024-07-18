@@ -38,7 +38,20 @@ export default function Dashboard() {
   };
 
   const barData = {
-    labels: ["June"],
+    labels: [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ],
     datasets: [
       {
         label: "Total Projects",
@@ -47,7 +60,7 @@ export default function Dashboard() {
         borderWidth: 1,
         hoverBackgroundColor: "#17a2b8",
         hoverBorderColor: "#17a2b8",
-        data: [2],
+        data: [1, 2, 1, 3, 2, 5, 4, 3, 2, 1, 2, 4],
       },
     ],
   };
@@ -107,7 +120,7 @@ export default function Dashboard() {
         </div>
 
         <div className="flex gap-6">
-          <div className="min-w-0 p-4 bg-white rounded-lg shadow-xs">
+          <div className="w-full p-4 bg-white rounded-lg shadow-lg border border-gray-300">
             <h4 className="mb-4 font-semibold text-gray-800">
               Total users by gender
             </h4>
@@ -116,14 +129,20 @@ export default function Dashboard() {
             </div>
           </div>
 
-          <div className="min-w-0 p-4 bg-white rounded-lg shadow-xs">
+          <div className="w-full p-4 bg-white rounded-lg shadow-lg border border-gray-300">
             <h4 className="mb-4 font-semibold text-gray-800">
               Number of Projects Per Month
             </h4>
             <div className="relative h-64">
               <Bar
                 data={barData}
-                options={{ scales: { y: { beginAtZero: true } } }}
+                options={{
+                  scales: {
+                    y: {
+                      beginAtZero: true,
+                    },
+                  },
+                }}
               />
             </div>
           </div>
