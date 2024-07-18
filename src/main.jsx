@@ -51,12 +51,16 @@ const router = createBrowserRouter([
         element: <SchedulePage />,
       },
       {
+        path: "/admin/detail-schedule",
+        element: <ShowSchedule />,
+      },
+      {
         path: "/admin/scehdule-user",
         element: <ScheduleUserPage />,
       },
       {
-        path: "/admin/detail-schedule",
-        element: <ShowSchedule />,
+        path: "/admin/scehdule-user/detail-schedule",
+        element: <ScheduleUserPage />,
       },
       {
         path: "/admin/presence",
