@@ -66,11 +66,11 @@ export default function Dashboard() {
   };
 
   return (
-    <main className="h-full overflow-y-auto">
+    <main className="h-full overflow-y-auto bg-gray-50">
       <div className="container mx-auto px-6 py-6">
         <h2 className="text-2xl font-semibold text-gray-700 mb-4">Dashboard</h2>
         <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
-          <div className="flex items-center p-4 bg-white rounded-lg shadow-xs">
+          <div className="flex items-center p-4 bg-white rounded-lg shadow-lg border-2 border-gray-100">
             <div className="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full">
               <FaUsers />
             </div>
@@ -82,7 +82,7 @@ export default function Dashboard() {
             </div>
           </div>
 
-          <div className="flex items-center p-4 bg-white rounded-lg shadow-xs">
+          <div className="flex items-center p-4 bg-white rounded-lg shadow-lg border-2 border-gray-100">
             <div className="p-3 mr-4 text-green-500 bg-green-100 rounded-full">
               <FaClipboardList />
             </div>
@@ -94,7 +94,7 @@ export default function Dashboard() {
             </div>
           </div>
 
-          <div className="flex items-center p-4 bg-white rounded-lg shadow-xs">
+          <div className="flex items-center p-4 bg-white rounded-lg shadow-lg border-2 border-gray-100">
             <div className="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full">
               <FaFileCode />
             </div>
@@ -106,7 +106,7 @@ export default function Dashboard() {
             </div>
           </div>
 
-          <div className="flex items-center p-4 bg-white rounded-lg shadow-xs">
+          <div className="flex items-center p-4 bg-white rounded-lg shadow-lg border-2 border-gray-100">
             <div className="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full">
               <FaClipboardCheck />
             </div>
@@ -119,8 +119,11 @@ export default function Dashboard() {
           </div>
         </div>
 
+        <h2 className="text-2xl font-semibold text-gray-700 mb-4 mt-10">
+          Chart
+        </h2>
         <div className="flex gap-6">
-          <div className="w-full p-4 bg-white rounded-lg shadow-lg border border-gray-300">
+          <div className="w-1/3 p-4 bg-white rounded-lg shadow-lg border-2 border-gray-100">
             <h4 className="mb-4 font-semibold text-gray-800">
               Total users by gender
             </h4>
@@ -129,13 +132,14 @@ export default function Dashboard() {
             </div>
           </div>
 
-          <div className="w-full p-4 bg-white rounded-lg shadow-lg border border-gray-300">
+          <div className="w-2/3 p-4 bg-white rounded-lg shadow-lg border-2 border-gray-100">
             <h4 className="mb-4 font-semibold text-gray-800">
               Number of Projects Per Month
             </h4>
-            <div className="relative h-64">
+            <div className="w-full">
               <Bar
                 data={barData}
+                className="h-full"
                 options={{
                   scales: {
                     y: {
