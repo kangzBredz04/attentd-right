@@ -6,6 +6,7 @@ import {
   FaAngleDoubleLeft,
   FaAngleLeft,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const scheduleData = [
   {
@@ -40,10 +41,6 @@ export default function SchedulePage() {
 
   const handleAdd = () => {
     setModal({ action: "add", schedule: null });
-  };
-
-  const handleShow = (schedule) => {
-    setModal({ action: "show", schedule });
   };
 
   const handleEdit = (schedule) => {
@@ -168,12 +165,15 @@ export default function SchedulePage() {
                               >
                                 Edit
                               </button>
-                              <button
-                                onClick={() => handleShow(s)}
+                              <Link
+                                to={"/admin/detail-schedule"}
+                                onClick={() =>
+                                  localStorage.setItem("title", s.name)
+                                }
                                 className="show-button px-4 py-2 inline-block text-sm font-medium text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
                               >
                                 Show
-                              </button>
+                              </Link>
                               <button
                                 onClick={() => handleDelete(s)}
                                 className="px-4 py-2 inline-block text-sm font-medium text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-lg active:bg-red-600 hover:bg-red-700 focus:outline-none focus:shadow-outline-purple"
